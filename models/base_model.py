@@ -6,8 +6,9 @@ import uuid
 import datetime
 
 class BaseModel():
-    """defines all common attributes/methods for other classes"""
-    
+        """
+        defines all common attributes/methods for other classes
+        """
     def __init__(self):
         """
         Initializes a new instance of BaseModel.

@@ -9,13 +9,17 @@ class BaseModel():
     """defines all common attributes/methods for other classes"""
     
     def __init__(self):
-
+        """
+        Initializes a new instance of BaseModel.
+        """
         self.id = str(uuid.uuid4())
         self.created_at = datetime.datetime.now()
         self.updated_at = datetime.datetime.now()
 
     def __str__(self):
-
+        """
+        Returns a string representation of BaseModel instance.
+        """
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
     
     def save(self):

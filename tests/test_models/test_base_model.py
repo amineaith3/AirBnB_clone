@@ -39,3 +39,12 @@ class TestBaseModel(unittest.TestCase):
         my_model_json = my_model.to_dict()
         self.assertNotIsInstance(my_model.__str__(), dict)
         self.assertIsInstance(my_model_json, dict)
+
+    def test_from_dict(self):
+        """testing to Create BaseModel from dictionary"""
+        my_model = BaseModel()
+        my_model_json = my_model.to_dict()
+        my_new_model = BaseModel(**my_model_json)
+        self.assertIsInstance(my_new_model, BaseModel)
+        self.assertIsNot(my_new_model, my_model)
+

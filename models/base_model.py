@@ -10,13 +10,24 @@ class BaseModel():
     """
         defines all common attributes/methods for other classes
     """
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
             Initializes a new instance of BaseModel.
+
+            Args:
+                args: unused
+                kwargs: Dictionary representation of the instance
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+        if kwargs:
+            for key, value in kwargs.items():
+                if key != "__class__":
+                    if value in ["created_at", "updated_at"]:
+                        value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
 
     def __str__(self):
         """
@@ -37,8 +48,8 @@ class BaseModel():
             Returns a dictionary containing
             all keys/values of __dict__ of the instance
         """
-        my_dict = self.__dict__
-        my_dict['__dict__'] = self.__class__.__name__
+        my_dict = self.__dict__.copy()
+        my_dict['__class__'] = self.__class__.__name__
         my_dict['created_at'] = my_dict['created_at'].isoformat()
         my_dict['updated_at'] = my_dict['updated_at'].isoformat()
         return my_dict

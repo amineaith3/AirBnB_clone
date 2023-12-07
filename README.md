@@ -45,10 +45,10 @@ The goal of the project is to deploy on your server a simple copy of the [AirBnB
 | ---- | ---- |
 | 0. README, AUTHORS | [AUTHORS](./AUTHORS) |
 | 1. Be pycodestyle compliant! | [SOON](./) |
-| 2. Unittests | [SOON](./) |
+| 2. Unittests | [test_base_model.py](./tests/test_models/test_base_model.py) |
 | 3. BaseModel | [base_model.py](./models/base_model.py) |
-| 4. Create BaseModel from dictionary | [SOON](./) |
-| 5. Store first object | [SOON](./) |
+| 4. Create BaseModel from dictionary | [base_model.py](./models/base_model.py) |
+| 5. Store first object | [file_storage.py](./models/engine/file_storage.py) |
 | 6. Console 0.0.1 | [SOON](./) |
 | 7. Console 0.1 | [SOON](./) |
 | 8. First User | [SOON](./) |

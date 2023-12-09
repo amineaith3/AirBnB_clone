@@ -42,3 +42,4 @@ class FileStorage():
             return
         with open(self.__file_path, 'r', encoding="UTF-8") as infile:
             data = json.load(infile)
+        # not finish

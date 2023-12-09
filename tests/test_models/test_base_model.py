@@ -14,6 +14,7 @@ class TestBaseModel(unittest.TestCase):
         """test the type of the instance atributes"""
         my_model = BaseModel()
         self.assertIsInstance(my_model, BaseModel)
+        self.assertIsInstance(my_model.id, str)
         self.assertIsInstance(my_model.created_at, datetime)
         self.assertIsInstance(my_model.updated_at, datetime)
 

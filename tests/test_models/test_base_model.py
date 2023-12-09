@@ -47,4 +47,3 @@ class TestBaseModel(unittest.TestCase):
         my_new_model = BaseModel(**my_model_json)
         self.assertIsInstance(my_new_model, BaseModel)
         self.assertIsNot(my_new_model, my_model)
-

@@ -23,7 +23,7 @@ class FileStorage():
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
-        
+
         self.__objects["{}.{}".format(obj.__class__.__name__, obj.id)] = obj
 
     def save(self):
@@ -36,8 +36,9 @@ class FileStorage():
 
     def reload(self):
         """deserializes the JSON file to __objects"""
-        if not (os.path.exists(self.__file_path) and os.path.getsize(self.__file_path) > 1):
+        condition1 = os.path.exists(self.__file_path)
+        condition2 = os.path.getsize(self.__file_path) > 1
+        if not (condition1 and condition2):
             return
         with open(self.__file_path, 'r', encoding="UTF-8") as infile:
             data = json.load(infile)
-        

@@ -28,14 +28,15 @@ class FileStorage():
 
     def save(self):
         """serializes __objects to the JSON file"""
+        serialized_objects = dict()
         for key, value in self.__objects.items():
-            result[key] = value.to_dict()
+            serialized_objects[key] = value.to_dict()
         with open(self.__file_path, "w", encoding="UTF-8") as outfile:
-            json.dump(result, outfile)
+            json.dump(serialized_objects, outfile)
 
     def reload(self):
         """deserializes the JSON file to __objects"""
-        if not os.path.isfile(self.__file_path):
+        if not (os.path.exists(self.__file_path) and os.path.getsize(self.__file_path) > 1):
             return
         with open(self.__file_path, 'r', encoding="UTF-8") as infile:
             data = json.load(infile)

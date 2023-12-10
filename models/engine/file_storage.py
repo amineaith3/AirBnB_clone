@@ -35,13 +35,11 @@ class FileStorage():
             json.dump(serialized_objects, outfile)
 
     def reload(self):
-        """Deserialize the JSON file __file_path to __objects, if it exists."""
-        try:
-            with open(FileStorage.__file_path) as f:
-                objdict = json.load(f)
-                for o in objdict.values():
-                    cls_name = o["__class__"]
-                    del o["__class__"]
-                    self.new(eval(cls_name)(**o))
-        except FileNotFoundError:
-            return #kemlt had reload
+        """deserializes the JSON file to __objects"""
+        condition1 = os.path.exists(self.__file_path)
+        condition2 = os.path.getsize(self.__file_path) > 1
+        if not (condition1 and condition2):
+            return
+        with open(self.__file_path, 'r', encoding="UTF-8") as infile:
+            data = json.load(infile)
+            # not finish

@@ -12,6 +12,7 @@ class BaseModel():
         defines all common attributes/methods for other classes
     """
     time = "%Y-%m-%dT%H:%M:%S.%f"
+
     def __init__(self, *args, **kwargs):
         """
             Initializes a new instance of BaseModel.
@@ -23,7 +24,9 @@ class BaseModel():
         if kwargs:
             for key, value in kwargs.items():
                 if key == "updated_at" or key == "created_at":
-                    self.__dict__[key] = datetime.datetime.strptime(value, self.time) #strptime in datetime in datetime wa9ila
+                    # strptime in datetime in datetime wa9ila
+                    update_time = datetime.datetime.strptime(value, self.time)
+                    self.__dict__[key] = update_time
                 elif key != "__class__":
                     self.__dict__[key] = value
         else:

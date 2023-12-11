@@ -21,11 +21,10 @@ class BaseModel():
         """
         if kwargs:
             for key, value in kwargs.items():
-                if key != "__class__":
-                    if value in ["created_at", "updated_at"]:
-                        style = "%Y-%m-%dT%H:%M:%S.%f"
-                        value = datetime.strptime(value, style)
-                    setattr(self, key, value)
+                if key == "updated_at" or key == "created_at":
+                    self.__dict__[key] = datetime.strptime(value, self.time)
+                elif key != "__class__":
+                    self.__dict__[key] = value
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()

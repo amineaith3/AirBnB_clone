@@ -11,6 +11,7 @@ class BaseModel():
     """
         defines all common attributes/methods for other classes
     """
+    time = "%Y-%m-%dT%H:%M:%S.%f"
     def __init__(self, *args, **kwargs):
         """
             Initializes a new instance of BaseModel.

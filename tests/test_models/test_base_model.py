@@ -2,6 +2,7 @@
 """test_base_model"""
 
 
+import models
 from models.base_model import BaseModel
 from datetime import datetime
 import unittest
@@ -48,3 +49,8 @@ class TestBaseModel(unittest.TestCase):
         my_new_model = BaseModel(**my_model_json)
         self.assertIsInstance(my_new_model, BaseModel)
         self.assertIsNot(my_new_model, my_model)
+    
+    def test_doc_string(self):
+        """ Test if doc string exist """
+        self.assertNotEqual(models.base_model.__doc__, None)
+        self.assertNotEqual(BaseModel.__doc__, None)

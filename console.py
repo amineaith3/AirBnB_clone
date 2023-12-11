@@ -18,7 +18,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     cl = {"BaseModel", "User", "Place", "State", "City", "Amenity", "Review"}
 
-    def do_create(self, arg):
+    def create(self, arg): #kant do_create
         """Creates a new instance of BaseModel and prints the id
         """
         words = arg.split()
@@ -31,7 +31,7 @@ class HBNBCommand(cmd.Cmd):
             new.save()
             print(new.id)
 
-    def do_show(self, arg):
+    def show(self, arg): #kant do_show
         """ Prints the string representation of an instance
         based on the class name
         """
@@ -54,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(words) == 0:
             print("** class name missing **")
 
-    def do_all(self, arg):
+    def all(self, arg): #kant do_all
         """Prints all string representation of all instances
         based or not on the class name
         """
@@ -65,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-    def do_destroy(self, arg):
+    def destroy(self, arg): #kant do_destroy
         """Deletes an instance based on the class name and id
         """
         ar = arg.split()
@@ -86,7 +86,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
-    def do_update(self, arg):
+    def update(self, arg): #kant do_update
         """Updates an instance based on the class name and id
         by adding or updating attribute
         """
@@ -113,12 +113,12 @@ class HBNBCommand(cmd.Cmd):
         elif len(ar) == 3:
             print("** value missing **")
 
-    def do_quit(self, arg):
+    def quit(self, arg): #kant do_quit
         """Quit command to exit the program
         """
         return True
 
-    def do_EOF(self, arg):
+    def EOF(self, arg): #kant do_EOF
         """EOF command to exit the program
         """
         return True
